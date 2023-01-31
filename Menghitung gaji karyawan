@@ -1,0 +1,88 @@
+#include <iostream>
+#include <conio.h>
+#include <string>
+
+using namespace std;
+
+int main(){
+    string nama[10];
+    int jum, gol[10], jkerja[10], jlembur[10];
+    int gpokok[10], glembur[10], tun_pengabdian[10], pajakgpokok[10], pajaklembur[10], totalpajak[10], gajibersih[10];
+    
+    cout<<"======================================"<<endl;
+    cout <<"#           DATA KARYAWAN          #"<<endl;
+    cout<<"======================================"<<endl;
+    cout <<"Masukan Jumlah Karyawan : ";
+    cin >>jum;
+    cout <<endl;
+    
+    for (int i=1;i<=jum;i++){
+        cout << "KARYAWAN KE-"<<i<<endl;
+        cout << "Masukan Nama             : ";
+        cin >>nama[i];
+        cout << "Masukan Golongan         : ";
+        cin >>gol[i];
+        cout << "Masukan Jumlah Jam Kerja : ";
+        cin >>jkerja[i];
+        
+        switch(gol[i]){
+            case 1:
+                 gpokok[i]=2500000;
+                 tun_pengabdian[i]=300000;
+                 break;
+            case 2:
+                 gpokok[i]=2900000;
+                 tun_pengabdian[i]=350000;
+                 break;
+            case 3:
+                 gpokok[i]=3200000;
+                 tun_pengabdian[i]=375000;
+                 break;
+            case 4:
+                 gpokok[i]=3500000;
+                 tun_pengabdian[i]=400000;
+                 break;             
+              delfaut:
+                      gpokok[i]=0;
+                      tun_pengabdian[i]=0;
+                      }
+                      
+        if (jkerja[i]>154){
+                jlembur[i]=jkerja[i]-154;
+                }else {
+                      jlembur[i]=0;
+                      }
+                      
+        glembur[i]=jlembur[i]*50000;
+        pajakgpokok[i]=0.05*gpokok[i];
+       	pajaklembur[i]=0.05*glembur[i];
+        totalpajak[i]=pajakgpokok[i]+pajaklembur[i];
+	    gajibersih[i]=((gpokok[i]+tun_pengabdian[i]+glembur[i])-totalpajak[i]);
+	    
+     	cout<<endl;
+	}
+	
+	cout<<"======================================"<<endl;
+	cout<<"# PROGRAM MENGHITUNG GAJI KARYAWAN #"<<endl;
+	cout<<"======================================"<<endl;	
+		cout<<endl;
+	for (int i=1;i<=jum;i++){
+		
+		cout<<"     KARYAWAN KE-"<<i<<endl;
+		cout<<"1.Nama                 : "<<nama[i]<<endl;
+		cout<<"2.Gaji Pokok           : "<<gpokok[i]<<endl;		
+		cout<<"3.Gaji Lembur          : "<<glembur[i]<<endl;
+		cout<<"4.Pajak Gaji Pokok     : "<<pajakgpokok[i]<<endl;
+		cout<<"5.Pajak Lembur         : "<<pajaklembur[i]<<endl;
+		cout<<"6.Total Pajak          : "<<totalpajak[i]<<endl;
+		cout<<"7.Tunjangan Pengabdian : "<<tun_pengabdian[i]<<endl;
+		cout<<"8.Gaji Diterima        : "<<gajibersih[i]<<endl;
+		
+	cout<<"======================================"<<endl;		
+		cout<<endl<<endl;	
+	}	
+                         
+                       
+   getch();
+    
+}
